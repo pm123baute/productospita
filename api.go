@@ -15,10 +15,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.Close()
-	item := "Harina"
-	query := "SELECT COUNT(*) AS cantidad_items FROM productos WHERE nombre Like ?;"
+	prdBuscar := "Pepsi"
+	sql := "SELECT COUNT(*) AS cnt_items FROM productos WHERE nombre Like ?;"
 	var count int
-	err = db.QueryRow(query, "%"+item+"%").Scan(&count)
+	err = db.QueryRow(sql, "%"+prdBuscar+"%").Scan(&count)
 	if err != nil {
 		log.Fatal(err)
 	}
